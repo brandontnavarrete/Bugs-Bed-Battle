@@ -1,0 +1,68 @@
+class Player:
+    """
+    A class representing a player in the game.
+    """
+    def __init__(self, name, health = 100):
+        """
+        Initializes the player object with a name, health, and no weapon.
+        Args:
+            name (str): The name of the player.
+        """
+        self.name = name
+        self.health = health
+        self.weapon = None
+        self.score = 0
+
+    def attack(self, enemy):
+        """
+        Attacks an enemy with the player's current weapon, or a default damage of 5 if no weapon is equipped.
+        Args:
+            enemy (Enemy): The enemy to attack.
+        """
+        if self.weapon:
+            enemy.take_damage(self.weapon.damage)
+        else:
+            enemy.take_damage(5)
+
+    def get_weapon(self, weapon):
+      
+      """
+      Sets the player's current weapon to the specified weapon.
+
+      Args:
+        weapon (Weapon): The weapon to give to the player.
+      """
+      self.weapon = weapon
+      print(f"{self.name} equips {weapon.name}!")
+      return weapon  # add this line to return the weapon object
+
+
+    def get_weapon(self, weapon):
+        """
+        Picks up a weapon and equips it.
+        Args:
+            weapon (Weapon): The weapon to pick up.
+        """
+        self.weapon = weapon
+
+    def take_damage(self, damage):
+        """
+        Reduces the player's health by the amount of damage taken.
+        Args:
+            damage (int): The amount of damage taken.
+        """
+        self.health -= damage
+        if self.health <= 0:
+            print(f"{self.name} has been defeated!")
+
+
+    def self_describe(self):
+        """
+        Prints information about the player, including their name, health, and weapon (if they have one).
+        """
+        print(f"Name: {self.name}")
+        print(f"Health: {self.health}")
+        if self.weapon:
+            print(f"Weapon: {self.weapon.name}")
+        else:
+            print("No weapon equipped.")
