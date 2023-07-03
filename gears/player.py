@@ -29,7 +29,7 @@ class Player:
       print(
         f"{self.name} attacks {enemy.name} for {self.weapon.damage} damage!")
     else:
-      enemy.take_damage(5)
+      enemy.take_damage(5, self)
       print(f"{self.name} attacks {enemy.name} for 5 damage!")
       print(f"{enemy.name}'s health: {enemy.health}")
 # ATTACK
@@ -93,6 +93,7 @@ class Player:
         """
     print(f"Name: {self.name}")
     print(f"Health: {self.health}")
+    print(f"Score: {self.score}")
     if self.weapon:
       print(f"Weapon: {self.weapon.name}")
     else:

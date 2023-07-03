@@ -5,9 +5,9 @@ class Insect:
 
   def __init__(self, name=None):
     if name is None:
-        self.name = random.choice(['Ant', 'Spider', 'Slug'])
+      self.name = random.choice(['Ant', 'Spider', 'Slug'])
     else:
-        self.name = name
+      self.name = name
     self.health = random.randint(1, 100)
 
   def attack(self, player):
@@ -24,7 +24,7 @@ class Insect:
 
     return damage
 
-  def take_damage(self, damage):
+  def take_damage(self, damage, player):
     """
         Takes the specified amount of damage, reducing the insect's health.
 
@@ -34,6 +34,8 @@ class Insect:
     self.health -= damage
     if self.health <= 0:
       print(f"{self.name} has been defeated!")
+      print(f"{player.name} has scored!")
+      player.score += 1
 
   def run_away(self):
     """
