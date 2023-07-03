@@ -3,8 +3,11 @@ import random
 
 class Insect:
 
-  def __init__(self, name):
-    self.name = name
+  def __init__(self, name=None):
+    if name is None:
+        self.name = random.choice(['Ant', 'Spider', 'Slug'])
+    else:
+        self.name = name
     self.health = random.randint(1, 100)
 
   def attack(self, player):
@@ -15,10 +18,10 @@ class Insect:
         player (Player): The player to attack.
       """
     damage = random.randint(1, 5)
-    player.take_damage(damage)
-    print(f"{self.name} attacks {player.name} for {damage} damage!")
+    actual_damage = player.take_damage(damage)
+    print(f"{self.name} attacks {player.name} for {actual_damage} damage!")
     print(f"{player.name}'s health: {player.health}")
-    
+
     return damage
 
   def take_damage(self, damage):

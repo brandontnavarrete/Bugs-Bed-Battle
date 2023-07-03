@@ -14,38 +14,44 @@ class Player:
     self.weapon = None
     self.defense = 1.0  # Initial defense attribute
     self.score = 0
-    
+
 # ATTACK
+
   def attack(self, enemy):
     """
+    
         Attacks an enemy with the player's current weapon, or a default damage of 5 if no weapon is equipped.
         Args:
             enemy (Enemy): The enemy to attack.
         """
     if self.weapon:
       enemy.take_damage(self.weapon.damage)
-      print(f"{self.name} attacks {enemy.name} for {self.weapon.damage} damage!")
+      print(
+        f"{self.name} attacks {enemy.name} for {self.weapon.damage} damage!")
     else:
       enemy.take_damage(5)
       print(f"{self.name} attacks {enemy.name} for 5 damage!")
+      print(f"{enemy.name}'s health: {enemy.health}")
 # ATTACK
 
 # DEFEND
+
   def defend(self):
-        """
+    """
         Increases the player's defense for the current turn, reducing the damage taken from the enemy's attack.
         """
-        defense_multiplier = 0.3  # Assume defense multiplies incoming damage by 0.5 (50% reduction)
-        self.defense *= defense_multiplier
-        print(f"{self.name} defends and increases defense!")
+    defense_multiplier = 0.3  # Assume defense multiplies incoming damage by 0.5 (50% reduction)
+    self.defense *= defense_multiplier
+    print(f"{self.name} defends and increases defense!")
 
   def reset_defense(self):
-        """
+    """
         Resets the player's defense attribute to its original value.
         """
-        self.defense = 1.0
+    self.defense = 1.0
+
+
 # DEFEND
-  
 
   def get_weapon(self, weapon):
     """
@@ -72,11 +78,14 @@ class Player:
     Args:
         damage (int): The amount of damage taken.
     """
-    actual_damage = int(damage * self.defense)  # Apply defense to reduce damage taken
+    actual_damage = int(damage *
+                        self.defense)  # Apply defense to reduce damage taken
     self.health -= actual_damage
     if self.health <= 0:
-        print(f"{self.name} has been defeated!")
+      print(f"{self.name} has been defeated!")
+
     self.reset_defense()  # Reset defense attribute after taking damage
+    return actual_damage
 
   def self_describe(self):
     """
