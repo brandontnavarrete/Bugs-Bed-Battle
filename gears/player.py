@@ -14,6 +14,30 @@ class Player:
     self.weapon = None
     self.defense = 1.0  # Initial defense attribute
     self.score = 0
+    self.inventory = []
+
+# INVENTORY
+
+  def add_to_inventory(self, item):
+    """
+        Add an item to the player's inventory.
+
+        Args:
+            item: The item to add to the inventory.
+        """
+    self.inventory.append(item)
+    print(f"{item.name} added to your inventory.")
+
+  def show_inventory(self):
+    """
+        Display the contents of the player's inventory.
+        """
+    print("Your Inventory:")
+    if not self.inventory:
+      print("No items in your inventory.")
+    else:
+      for item in self.inventory:
+        print(f"- {item.name}")
 
 # ATTACK
 
