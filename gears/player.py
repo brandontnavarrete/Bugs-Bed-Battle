@@ -87,6 +87,16 @@ class Player:
     self.reset_defense()  # Reset defense attribute after taking damage
     return actual_damage
 
+  # SELF DESCRIBE
+  def is_alive(self):
+    """
+        Checks if the player is alive.
+
+        Returns:
+            bool: True if the player's health is greater than zero, False otherwise.
+        """
+    return self.health > 0
+
   def self_describe(self):
     """
         Prints information about the player, including their name, health, and weapon (if they have one).

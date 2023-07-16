@@ -8,13 +8,13 @@ from gears.insect import Insect
 # Create an instance of the Player class
 player = Player("John")
 player.self_describe()
-# Create an instance of the Insect class
+# Create an instance of the 0Insect class
 insect = Insect()
 
 # Attack the player
 insect.attack(player)
 
-while player.health > 0:
+while player.is_alive():
   # Check if the insect is defeated
   if insect.health <= 0:
     print(f"{insect.name} has been defeated!")
@@ -39,6 +39,6 @@ while player.health > 0:
 
   # Attack the player
   insect.attack(player)
-  
+
 player.self_describe()
 print('Player is defeated. Game over!')
