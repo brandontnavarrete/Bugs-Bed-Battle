@@ -88,14 +88,6 @@ class Player:
     print(f"{self.name} equips {weapon.name}!")
     return weapon  # add this line to return the weapon object
 
-  def get_weapon(self, weapon):
-    """
-        Picks up a weapon and equips it.
-        Args:
-            weapon (Weapon): The weapon to pick up.
-        """
-    self.weapon = weapon
-
   def take_damage(self, damage):
     """
     Reduces the player's health by the amount of damage taken, considering the defense attribute.
@@ -132,3 +124,4 @@ class Player:
       print(f"Weapon: {self.weapon.name}")
     else:
       print("No weapon equipped.")
+    Player.show_inventory(self)

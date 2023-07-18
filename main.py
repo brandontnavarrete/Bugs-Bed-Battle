@@ -4,41 +4,45 @@ import time
 # from folder 'gears' run player and class "Player"
 from gears.player import Player
 from gears.insect import Insect
+from gears.weapon import Weapon
 
-# Create an instance of the Player class
-player = Player("John")
-player.self_describe()
-# Create an instance of the 0Insect class
-insect = Insect()
 
-# Attack the player
-insect.attack(player)
+def main():
+  # Create an instance of the Player class
+  player = Player("John")
+  player.self_describe()
 
-while player.is_alive():
-  # Check if the insect is defeated
-  if insect.health <= 0:
-    print(f"{insect.name} has been defeated!")
-    insect = Insect()  # Spawn a new insect
+  # Create an instance of the Insect class
+  insect = Insect()
+  insect.self_describe()
 
-  # Get the player's choice
-  valid_choice = False
-  while not valid_choice:
-    answer = input("Enter 0 to attack or 1 to defend: ")
-    if answer == '0' or answer == '1':
-      valid_choice = True
+  # Create weapons
+  sword = Weapon("Sword", durability=50, damage=15)
+  axe = Weapon("Axe", durability=40, damage=20)
+  bow = Weapon("Bow", durability=30, damage=25)
+
+  # Player selects a weapon and adds it to the inventory
+  chosen_weapon = None
+  while chosen_weapon is None:
+    print("Choose a weapon to add to your inventory:")
+    print("1. Sword")
+    print("2. Axe")
+    print("3. Bow")
+    choice = input("Enter the number of your choice: ")
+
+    if choice == "1":
+      chosen_weapon = sword
+    elif choice == "2":
+      chosen_weapon = axe
+    elif choice == "3":
+      chosen_weapon = bow
     else:
-      print("Invalid choice. Please enter 0 or 1.")
+      print("Invalid choice. Try again.")
 
-  answer = int(answer)  # Convert the input to an integer
+  player.add_to_inventory(chosen_weapon)
 
-  # Perform the chosen action
-  if answer == 0:
-    player.attack(insect)
-  elif answer == 1:
-    player.defend()
+  print(f"{player.name} has selected {chosen_weapon.name} as their weapon.")
 
-  # Attack the player
-  insect.attack(player)
 
-player.self_describe()
-print('Player is defeated. Game over!')
+if __name__ == "__main__":
+  main()
