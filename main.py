@@ -30,6 +30,7 @@ def main():
     print("3. Bow")
     choice = input("Enter the number of your choice: ")
 
+    # choice sequence
     if choice == "1":
       chosen_weapon = sword
     elif choice == "2":
